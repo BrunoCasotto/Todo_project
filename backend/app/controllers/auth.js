@@ -1,10 +1,13 @@
-const express = require('express')
-const User = require('../db/models/user')
-const router = express.Router()
 const bcryptjs = require('bcryptjs')
+const express = require('express')
 const jwt = require('jsonwebtoken')
+
+const User = require('../db/models/user')
 const { secret } = require('./../config/auth')
 
+const router = express.Router()
+
+// function to generate user token by user id
 const generateToken = id => {
   const token = jwt.sign({ id }, secret, {
     expiresIn: 86400, //one day
