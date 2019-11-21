@@ -11,6 +11,7 @@ const start = () => {
 
   //register controllers
   require('./app/controllers/auth')(app);
+  require('./app/controllers/task')(app);
 
   //listen server
   app.listen(port)

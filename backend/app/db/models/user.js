@@ -17,6 +17,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
     select: false,
   },
+  tasks: {
+    type: Array,
+    default: []
+  },
   createdAt: {
     type: Date,
     default: Date.now,

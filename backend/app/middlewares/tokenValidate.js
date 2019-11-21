@@ -14,8 +14,9 @@ module.exports = (req, res, next) => {
     return res.status(401).send({ error: 'Token error'})
 
   const [scheme, token] = tokenParts
+  const regexBearer = /^Bearer$/i
 
-  if (!/ˆBearer$/i.test(scheme))
+  if (!regexBearer.test(scheme))
     return res.status(401).send({ error: 'Token malformatted'})
 
   jwt.verify(token, secret, (error, decoded) => {
