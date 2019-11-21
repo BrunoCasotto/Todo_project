@@ -1,6 +1,17 @@
 const mongoose = require('../index')
 const bcryptjs = require('bcryptjs')
 
+const TaskSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+})
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -17,10 +28,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
     select: false,
   },
-  tasks: {
-    type: Array,
-    default: []
-  },
+  tasks: [TaskSchema],
   createdAt: {
     type: Date,
     default: Date.now,

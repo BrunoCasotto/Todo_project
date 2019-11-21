@@ -7,6 +7,7 @@ const database = process.env.DB_DATABASE || 'todo_db'
 const mongooseOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 }
 
 const uri = `mongodb://${dbUser}:${dbPassword}@${host}/${database}`
