@@ -2,9 +2,11 @@ const express = require('express')
 const User = require('../db/models/user')
 const router = express.Router()
 
+//simple method to create new users
 router.post('/register', async (req, res) => {
   try {
     const user = await User.create(req.body)
+    user.password = undefined
 
     return res.send({ user })
   } catch (err) {
