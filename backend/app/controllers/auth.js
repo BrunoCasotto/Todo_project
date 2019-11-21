@@ -34,7 +34,7 @@ router.post('/register', async (req, res) => {
 router.post('/authenticate', async (req, res) => {
   const { email, password } = req.body
   try {
-    const user = await User.findOne({ email }).select('+password')
+    const user = await User.findOne({ email }).select('+password -tasks')
 
     if(! await bcryptjs.compare(password, user.password)) {
       return res.status(401).send({ error: 'Invalid password'})
