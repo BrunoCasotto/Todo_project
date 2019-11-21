@@ -66,4 +66,4 @@ router.delete('/remove/:taskId', tokenValidate, async (req, res) => {
   }
 })
 
-module.exports = app => app.use('/task', router)
+module.exports = router
