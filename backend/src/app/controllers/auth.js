@@ -61,30 +61,32 @@ router.post('/forgot_password', async (req, res) => {
     if(!user)
       res.status(400).send({ error: 'User not found'})
 
-      const token  = crypto.randomBytes(20).toString('hex')
-      const now = new Date()
-      now.setHours(now.getHours() + 1)
+    const token  = crypto.randomBytes(20).toString('hex')
+    const now = new Date()
+    now.setHours(now.getHours() + 1)
 
-      await User.findOneAndUpdate(user.id, {
-        $set: {
-          passwordResetToken: token,
-          passwordResetExpiress: now
-        }
-      })
-
-      mailer.sendMail({
-        to: email,
-        from: 'casottoalves1@gmail.com',
-        template: 'auth/forgot_password',
-        context: {
-          token,
-        },
-      }), error => {
-        if (error)
-          return res.status(400).send({ error: 'Forgot password failed'})
-
-        return res.send({})
+    await User.findOneAndUpdate(user.id, {
+      $set: {
+        passwordResetToken: token,
+        passwordResetExpiress: now
       }
+    })
+
+    const response = await mailer.sendMail({
+      from: '"Todo" <todo@noreply.com>',
+      to: email,
+      subject: "👻 Password reset ✔",
+      text: "Hello world?",
+      // html: "<b>Hello world?</b>"
+      // // template: 'auth/forgot_password',
+      // subject:'TODO - Recuperação de senha',
+      // // context: {
+      // //   token,
+      // // },
+      // html: "<b>Hello world?</b>"
+    })
+
+    return res.send({ response })
   } catch (err) {
     console.error('AuthController::forgot_password', { err })
     res.status(400).send({ error: 'Forgot password failed'})
