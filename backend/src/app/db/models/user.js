@@ -28,6 +28,14 @@ const UserSchema = new mongoose.Schema({
     required: true,
     select: false,
   },
+  passwordResetToken: {
+    type: String,
+    select: false,
+  },
+  passwordResetExpiress: {
+    type: String,
+    select: false,
+  },
   tasks: [TaskSchema],
   createdAt: {
     type: Date,

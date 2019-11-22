@@ -9,7 +9,7 @@ const start = () => {
   app.use(bodyParser.urlencoded({ extended: false }))
 
   //register controllers
-  require('./app/controllers/index')(app);
+  require('./src/app/controllers/index')(app);
 
   //listen server
   app.listen(port)
