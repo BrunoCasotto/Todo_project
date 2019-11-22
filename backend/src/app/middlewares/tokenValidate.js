@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { secret } = require('./../config/auth')
+const { secret } = require('./../../config/auth')
 
 //middleware to verify user token on requests
 module.exports = (req, res, next) => {

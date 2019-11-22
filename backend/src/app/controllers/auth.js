@@ -4,8 +4,8 @@ const express = require('express')
 const jwt = require('jsonwebtoken')
 const mailer = require('./../modules/mailer')
 
-const User = require('../db/models/user')
-const { secret } = require('./../config/auth')
+const User = require('./../models/user')
+const { secret } = require('./../../config/auth')
 
 const router = express.Router()
 

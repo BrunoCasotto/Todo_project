@@ -1,5 +1,5 @@
 const express = require('express')
-const User = require('../db/models/user')
+const User = require('./../models/user')
 const tokenValidate = require('./../middlewares/tokenValidate')
 
 const router = express.Router()
