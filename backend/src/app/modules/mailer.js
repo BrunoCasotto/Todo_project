@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-const hbs = require('nodemailer-express-handlebars')
+const nodemailerhbs = require('nodemailer-express-handlebars')
 const exphbs = require('express-handlebars')
 const path = require('path')
 
@@ -11,7 +11,7 @@ const transport = nodemailer.createTransport({
 
 const viewPath = path.resolve('src', 'resources', 'mail')
 
-transport.use('compile', hbs({
+transport.use('compile', nodemailerhbs({
   viewEngine: exphbs.create({
     layoutsDir: path.resolve(viewPath, 'layouts'),
     partialsDir: path.resolve(viewPath, 'partials'),
