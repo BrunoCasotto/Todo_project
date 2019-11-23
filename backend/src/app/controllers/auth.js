@@ -3,7 +3,6 @@ const crypto = require('crypto')
 const express = require('express')
 const jwt = require('jsonwebtoken')
 const mailer = require('./../modules/mailer')
-
 const User = require('./../models/user')
 const { secret } = require('./../../config/auth')
 
@@ -52,14 +51,14 @@ router.post('/authenticate', async (req, res) => {
   }
 })
 
-//simple method to authenticate user by email and password
+//simple method to generate a token to password reset and send to email
 router.post('/forgot_password', async (req, res) => {
   const { email } = req.body
   try {
     const user = await User.findOne( { email })
 
     if(!user)
-      res.status(400).send({ error: 'User not found'})
+      return res.status(400).send({ error: 'User not found'})
 
     const token  = crypto.randomBytes(20).toString('hex')
     const now = new Date()
@@ -85,7 +84,34 @@ router.post('/forgot_password', async (req, res) => {
     return res.send({ response })
   } catch (err) {
     console.error('AuthController::forgot_password', { err })
-    res.status(400).send({ error: 'Forgot password failed'})
+    return res.status(400).send({ error: 'Forgot password failed'})
+  }
+})
+
+//simple method to authenticate user by email and password
+router.post('/reset_password', async (req, res) => {
+  const { token, password, email } = req.body
+  try {
+    const user = await User.findOne( { email })
+      .select('+passwordResetToken passwordResetExpiress')
+
+    if(!user)
+      return res.status(400).send({ error: 'User not found'})
+
+    if(token !== user.passwordResetToken)
+      return res.status(400).send({ error: 'Invalid token'})
+
+    const now = new Date()
+    if(now > user.passwordResetExpiress)
+      res.status(400).send({ error: 'Expired token'})
+
+    user.password = password
+    await user.save()
+
+    return res.send()
+  } catch (err) {
+    console.error('AuthController::reset_password', { err })
+    return res.status(400).send({ error: 'Reset password failed'})
   }
 })
 
