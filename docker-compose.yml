@@ -1,4 +1,3 @@
-# Use root/example as user/password credentials
 version: '3.1'
 
 services:
@@ -12,12 +11,14 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
 
-  mongo-express:
-    image: mongo-express
-    restart: always
-    container_name: mongoex_todo
-    ports:
-      - 8081:8081
+  backend:
+    image: node:8.11.3
+    container_name: backend
+    volumes:
+      - ./backend/:/backend
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: root
+      PORT: 4000
+      DB_HOST: 'mongo:27017'
+    ports:
+      - 4000:4000
+    command: bash -c "cd ./backend && npm i && node index.js"
