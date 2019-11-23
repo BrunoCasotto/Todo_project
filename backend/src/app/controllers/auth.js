@@ -75,15 +75,11 @@ router.post('/forgot_password', async (req, res) => {
     const response = await mailer.sendMail({
       from: '"Todo" <todo@noreply.com>',
       to: email,
-      subject: "👻 Password reset ✔",
-      text: "Hello world?",
-      // html: "<b>Hello world?</b>"
-      // // template: 'auth/forgot_password',
-      // subject:'TODO - Recuperação de senha',
-      // // context: {
-      // //   token,
-      // // },
-      // html: "<b>Hello world?</b>"
+      subject: '👻 Password reset ✔',
+      template: 'auth/forgot_password',
+      context: {
+        token,
+      },
     })
 
     return res.send({ response })

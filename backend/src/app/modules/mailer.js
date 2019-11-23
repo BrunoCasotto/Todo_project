@@ -20,6 +20,6 @@ const nodemailerConfig = {
   extName: '.hbs',
 }
 
-// transport.use('compile', hbs(nodemailerConfig))
+transport.use('compile', hbs(nodemailerConfig))
 
 module.exports = transport
