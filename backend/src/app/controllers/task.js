@@ -4,22 +4,13 @@ const tokenValidate = require('./../middlewares/tokenValidate')
 
 const router = express.Router()
 
-//method to get all tasks from userId
-const getTasksByUserId = async userId => {
-  const user = await User
-    .findOne({ _id: userId })
-    .select('tasks')
-
-  return user.tasks
-}
-
 //method to get all tasks
 router.get('/all', tokenValidate, async (req, res) => {
   try {
     const { userId } = req
-    const tasks = await getTasksByUserId(userId.id)
+    const user = await User.findById(userId.id).select('tasks')
 
-    return res.send({ tasks })
+    return res.send({ tasks: user.tasks })
   } catch (error) {
     console.error('taskController::getAll', { error })
     return res.status(401).send({ error: 'Error on get tasks'})
@@ -30,13 +21,12 @@ router.get('/all', tokenValidate, async (req, res) => {
 router.post('/save', tokenValidate, async (req, res) => {
   try {
     const { userId, body } = req
-    await User.findOneAndUpdate({ _id: userId.id }, {
+    const user = await User
+      .findOneAndUpdate({ _id: userId.id }, {
         $push: { tasks: body }
-      })
+      }, { new: true })
 
-    const tasks = await getTasksByUserId(userId.id)
-
-    return res.send({ tasks })
+    return res.send({ tasks: user.tasks })
   } catch (error) {
     console.error('taskController::save', { error })
     return res.status(401).send({ error: 'Error on save tasks'})
@@ -56,13 +46,32 @@ router.delete('/remove/:taskId', tokenValidate, async (req, res) => {
             _id: taskId
           }
         }
-      })
+      }, { new: true })
 
-    const tasks = await getTasksByUserId(userId.id)
-    return res.send({ tasks })
+    return res.send({ tasks: user.tasks })
   } catch (error) {
     console.error('taskController::remove', { error })
     return res.status(401).send({ error: 'Error on remove task'})
+  }
+})
+
+//method to update and especific task
+router.put('/update/:taskId', tokenValidate, async (req, res) => {
+  try {
+    const { userId, body, params } = req
+    const { taskId } = params
+
+    const user = await User.updateOne(
+      { _id: userId.id, 'tasks._id': taskId },
+      { $set: { "tasks.$" : body } },
+      { runValidators: true }
+    )
+
+    return res.send({ user })
+  } catch (error) {
+    console.error('taskController::update', { error })
+    console.log(error)
+    return res.status(401).send({ error: 'Error on update task' })
   }
 })
 
