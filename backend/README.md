@@ -14,7 +14,10 @@ As tarefas são compostas apenas por título e descricão por se tratar de um pr
 |```/auth/authenticate```|auth|Rota para autenticação de usuários |[detalhes](#payload-de-autenticação) |
 |```/auth/forgot_password```|auth|Rota para envio de email de recuperação |[detalhes](#payload-recuperação-de-senha) |
 |```/auth/reset_password```|auth|Rota para resetar a senha com o token enviado |[detalhes](#payload-reset-de-senha) |
-
+|```/task/all```|task|Rota para obter todas as tarefas do usuario |[detalhes](#response-todas-tarefas) |
+|```/task/save```|task|Rota para salvar uma nova tarefa |[detalhes](#payload-salvar-tarefas) |
+|```/task/remove/:taskId```|task|Rota para deletar uma tarefa |[detalhes](#payload-deletar-tarefas) |
+|```/task/update/:taskId```|task|Rota para alterar uma tarefa |[detalhes](#payload-alterar-tarefas) |
 
 <br>
 
@@ -51,5 +54,37 @@ As tarefas são compostas apenas por título e descricão por se tratar de um pr
 }
 ```
 
+### response todas tarefas
+
+```
+{
+  "tasks": {
+    "_id": "356c40af10c3ba",
+    "title": "Task title",
+    "description": "Description of task..."
+  }
+}
+```
+
+### payload salvar tarefas
+
+```
+{
+  "title": "Task title",
+  "description": "Description of task..."
+}
+```
+
+### payload salvar tarefas
+Apenas colocar o id da tarefa no parametro da url.
+
+### payload alterar tarefas
+Colocar o id da tarefa no parametro da url.
+```
+{
+  "title": "Task title", //novo título
+  "description": "Description of task..." //nova descricao
+}
+```
 
 Projeto com propósito de estudo. :nerd_face:
