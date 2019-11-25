@@ -8,7 +8,7 @@ A autenticação desse projeto é baseada em email e senha, que no momento do lo
 |---|---|-----|---|
 |```/auth/register```|auth|Rota para cadastro de novos usuários|[detalhes](#payload-de-registro) |
 |```/auth/authenticate```|auth|Rota para autenticação de usuários |[detalhes](#payload-de-autenticação) |
-|```/auth/forgot_password```|auth|Rota para envio de email de recuperacao |[detalhes](#payload-recuperação-de-senha) |
+|```/auth/forgot_password```|auth|Rota para envio de email de recuperação |[detalhes](#payload-recuperação-de-senha) |
 |```/auth/reset_password```|auth|Rota para resetar a senha com o token enviado |[detalhes](#payload-reset-de-senha) |
 
 
