@@ -8,16 +8,16 @@ As apis para manipular as tarefas de cada usuário necessitam do token gerado pe
 As tarefas são compostas apenas por título e descricão por se tratar de um projeto com o mínimo viavel para produção.
 
 ### Rotas da api: <br>
-| Rota | módulo | descrição | payload |
-|---|---|-----|---|
-|```/auth/register```|auth|Rota para cadastro de novos usuários|[detalhes](#payload-de-registro) |
-|```/auth/authenticate```|auth|Rota para autenticação de usuários |[detalhes](#payload-de-autenticação) |
-|```/auth/forgot_password```|auth|Rota para envio de email de recuperação |[detalhes](#payload-recuperação-de-senha) |
-|```/auth/reset_password```|auth|Rota para resetar a senha com o token enviado |[detalhes](#payload-reset-de-senha) |
-|```/task/all```|task|Rota para obter todas as tarefas do usuario |[detalhes](#response-todas-tarefas) |
-|```/task/save```|task|Rota para salvar uma nova tarefa |[detalhes](#payload-salvar-tarefas) |
-|```/task/remove/:taskId```|task|Rota para deletar uma tarefa |[detalhes](#payload-deletar-tarefas) |
-|```/task/update/:taskId```|task|Rota para alterar uma tarefa |[detalhes](#payload-alterar-tarefas) |
+| Rota | método | módulo | descrição | payload |
+|---|---|-----|---|---|
+|```/auth/register```|POST|auth|Rota para cadastro de novos usuários|[detalhes](#payload-de-registro) |
+|```/auth/authenticate```|POST| auth|Rota para autenticação de usuários |[detalhes](#payload-de-autenticação) |
+|```/auth/forgot_password```|POST|auth|Rota para envio de email de recuperação |[detalhes](#payload-recuperação-de-senha) |
+|```/auth/reset_password```|POST|auth|Rota para resetar a senha com o token enviado |[detalhes](#payload-reset-de-senha) |
+|```/task/all```|GET|task|Rota para obter todas as tarefas do usuario |[detalhes](#response-todas-tarefas) |
+|```/task/save```|POST|task|Rota para salvar uma nova tarefa |[detalhes](#payload-salvar-tarefas) |
+|```/task/remove/:taskId```|DELETE|task|Rota para deletar uma tarefa |[detalhes](#payload-deletar-tarefas) |
+|```/task/update/:taskId```|PUT|task|Rota para alterar uma tarefa |[detalhes](#payload-alterar-tarefas) |
 
 <br>
 
