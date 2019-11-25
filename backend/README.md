@@ -3,6 +3,10 @@
 ## Autenticação
 A autenticação desse projeto é baseada em email e senha, que no momento do login retorna um token válido por 1 dia. As rotas para manipular as tarefas necessitam desse token dentro do Authorization do header.
 
+## Tarefas
+As apis para manipular as tarefas de cada usuário necessitam do token gerado pela autenticacão do usuário. Com ele dentro do Authorizadion to header obtemos o userId, dessa forma podemos buscar na base de dados as tarefas associadas ao usuário responsável pela requisicão.<br>
+As tarefas são compostas apenas por titulo e descricão, podendo futuramente ganhar novos campos. (MVP only)
+
 ### Rotas da api: <br>
 | Rota | modulo | descrição | payload |
 |---|---|-----|---|
