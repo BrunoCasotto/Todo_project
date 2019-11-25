@@ -7,6 +7,22 @@ A autenticação desse projeto é baseada em email e senha, que no momento do lo
 As apis para manipular as tarefas de cada usuário necessitam do token gerado pela autenticacão do usuário. Com ele dentro do Authorizadion to header obtemos o userId, dessa forma podemos buscar na base de dados as tarefas associadas ao usuário responsável pela requisicão.<br>
 As tarefas são compostas apenas por título e descricão por se tratar de um projeto com o mínimo viavel para produção.
 
+## Iniciando o ambiente
+Para iniciar o ambiente do projeto basta ter um banco de dados mongodb rodando. Você pode utilizar o containers dockers para essa aplicação, todas configuração disponível no arquivo <b>docker-composer.yml</b>. <br>
+<b>Váriaveis de ambiente:</b> <br>
+
+|Váriavels|default|descrição|
+|---|---|----|
+|DB_USER|'root'|usuário do banco de dados|
+|DB_PASSWORD|'root'|senha usuário do banco de dados|
+|DB_HOST|'localhost:27017'|host e porta do banco de dados|
+|DB_DATABASE|'todo_db'|nome do banco|
+|APP_SECRET|'deok03939039kdmk09393kdkkldk920202'|senha para gerar os tokens|
+|MAILER_HOST|'smtp.gmail.com'|host do serviço smtp de envio de email| 
+|MAILER_PORT|587|porta padrão do host smptp|
+|MAILER_USER|'youremail@gmail.com'|usuário/email do serviço smtp| 
+|MAILER_PASS|'password'|senha do usuário/email do serviço smtp| 
+
 ### Rotas da api: <br>
 | Rota | método | módulo | descrição | payload |
 |---|---|-----|---|---|
