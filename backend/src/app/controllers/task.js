@@ -8,7 +8,7 @@ const router = express.Router()
 router.get('/all', tokenValidate, async (req, res) => {
   try {
     const { userId } = req
-    const user = await User.findById(userId.id).select('tasks')
+    const user = await User.findById(userId).select('tasks')
 
     return res.send({ tasks: user.tasks })
   } catch (error) {
@@ -22,7 +22,7 @@ router.post('/save', tokenValidate, async (req, res) => {
   try {
     const { userId, body } = req
     const user = await User
-      .findOneAndUpdate({ _id: userId.id }, {
+      .findOneAndUpdate({ _id: userId }, {
         $push: { tasks: body }
       }, { new: true })
 
@@ -40,7 +40,7 @@ router.delete('/remove/:taskId', tokenValidate, async (req, res) => {
     const { taskId } = params
 
     const user = await User
-      .findOneAndUpdate({ _id: userId.id }, {
+      .findOneAndUpdate({ _id: userId }, {
         $pull: {
           tasks: {
             _id: taskId
@@ -62,7 +62,7 @@ router.put('/update/:taskId', tokenValidate, async (req, res) => {
     const { taskId } = params
 
     const user = await User.updateOne(
-      { _id: userId.id, 'tasks._id': taskId },
+      { _id: userId, 'tasks._id': taskId },
       { $set: { "tasks.$" : body } },
       { runValidators: true }
     )

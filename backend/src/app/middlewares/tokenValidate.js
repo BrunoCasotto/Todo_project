@@ -23,7 +23,7 @@ module.exports = (req, res, next) => {
     if (error)
       return res.status(401).send({ error: 'Token invalid'})
 
-    req.userId = decoded
+    req.userId = decoded.id
     return next()
   })
 }
