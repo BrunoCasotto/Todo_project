@@ -5,10 +5,10 @@ A autenticação desse projeto é baseada em email e senha, que no momento do lo
 
 ## Tarefas
 As apis para manipular as tarefas de cada usuário necessitam do token gerado pela autenticacão do usuário. Com ele dentro do Authorizadion to header obtemos o userId, dessa forma podemos buscar na base de dados as tarefas associadas ao usuário responsável pela requisicão.<br>
-As tarefas são compostas apenas por titulo e descricão, podendo futuramente ganhar novos campos. (MVP only)
+As tarefas são compostas apenas por título e descricão por se tratar de um projeto com o mínimo viavel para produção.
 
 ### Rotas da api: <br>
-| Rota | modulo | descrição | payload |
+| Rota | módulo | descrição | payload |
 |---|---|-----|---|
 |```/auth/register```|auth|Rota para cadastro de novos usuários|[detalhes](#payload-de-registro) |
 |```/auth/authenticate```|auth|Rota para autenticação de usuários |[detalhes](#payload-de-autenticação) |
@@ -50,3 +50,6 @@ As tarefas são compostas apenas por titulo e descricão, podendo futuramente ga
 	"password": "newPassword"
 }
 ```
+
+
+Projeto com propósito de estudo. :nerd_face:
