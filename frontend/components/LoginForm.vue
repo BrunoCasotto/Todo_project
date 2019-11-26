@@ -1,6 +1,6 @@
 <template>
   <form class="form-signin" v-on:submit.prevent="signIn(email, password)">
-    <h1 class="h3 mb-3 font-weight-normal">
+    <h1 class="h3 mb-3 font-weight-normal text-center">
       Entrar
     </h1>
     <label for="inputEmail" class="sr-only">Email</label>
@@ -16,9 +16,15 @@
       v-model="password"
       type="password"
       id="inputPassword"
-      class="form-control mb-4"
+      class="form-control mb-2"
       placeholder="Senha"
     >
+
+    <div class="mb-2">
+      <nuxt-link to="/signup">
+        Não sou cadastrado
+      </nuxt-link>
+    </div>
     <button
       class="btn btn-lg btn-primary btn-block"
       type="submit"

@@ -1,5 +1,5 @@
 <template>
-  <div class="login-form text-center">
+  <div class="login-form">
     <div class="login-form__content shadow p-3">
       <LoginForm />
     </div>
