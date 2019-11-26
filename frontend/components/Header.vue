@@ -2,12 +2,29 @@
   <div class="header shadow">
     <img class="header__logo" src="./../static/icon.png" alt="">
     <h1 class="title header__title">Tarefas Online</h1>
+    <button
+      v-if="isLogged"
+      @click="logout"
+      class="btn btn-secondary"
+    >
+      Sair
+    </button>
+    <span v-else />
   </div>
 </template>
 
 <script>
 export default {
-
+  computed: {
+    isLogged() {
+      return this.$auth.loggedIn
+    }
+  },
+  methods: {
+    logout() {
+      this.$auth.logout()
+    }
+  }
 }
 </script>
 
@@ -21,6 +38,7 @@ export default {
   padding: 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   //fix horizontal screen
   @media screen and(max-height: 320px) {

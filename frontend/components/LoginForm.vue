@@ -26,7 +26,7 @@
     </div>
 
     <div class="form__controller">
-      <Loader :active="true" />
+      <Loader :active="false" />
       <button
         class="btn btn-lg btn-primary btn-block"
         type="submit"
@@ -54,7 +54,12 @@ export default {
   },
   methods: {
     signIn(email, password) {
-      singIn({ email, password })
+      this.$auth.loginWith('local', {
+        data: {
+          email,
+          password
+        }
+      })
     }
   }
 }

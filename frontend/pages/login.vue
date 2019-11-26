@@ -1,31 +1,29 @@
 <template>
-  <div class="home-page">
-    <div class="home-page__content text-center">
-      <h4 class="mb-4">
-        Bem vindo ao sistema
-      </h4>
-      <nuxt-link to="/login">
-        Entrar
-      </nuxt-link>
+  <div class="login-form">
+    <div class="login-form__content shadow p-3">
+      <LoginForm />
     </div>
   </div>
 </template>
 
 <script>
+import LoginForm from '~/components/LoginForm.vue'
+
 export default {
-  auth: false
+  components: {
+    LoginForm
+  }
 }
 </script>
 
 <style lang="scss">
 @import '~assets/sass/vars';
 
- .home-page {
+ .login-form {
    width: 100%;
    padding: 20px;
 
    &__content {
-     padding: 20px;
      background: $translucid-color;
      border-radius: 8px;
      max-width: 300px;

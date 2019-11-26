@@ -1,6 +1,5 @@
 <template>
-<div class="loader-overlay">
-
+<div v-if="active" class="loader-overlay">
   <div class="loader-overlay__content">
     <div class="spinner-border text-primary" role="status">
       <span class="sr-only">Carregando...</span>

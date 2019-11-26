@@ -40,7 +40,9 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
   proxy: {
     '/api': {
@@ -49,6 +51,22 @@ export default {
         '^/api' : '/'
         }
       }
+  },
+  router: {
+    middleware: ['auth']
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/auth/authenticate', method: 'post', propertyName: 'token' },
+          user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
+        }
+      },
+    },
+    redirect: {
+      logout: '/callback'
+    }
   },
   /*
   ** Build configuration
