@@ -1,6 +1,6 @@
 <template>
   <div class="login-form text-center">
-    <div class="login-form__content shadow-none p-3 mb-5 bg-light rounded">
+    <div class="login-form__content shadow p-3">
       <LoginForm />
     </div>
   </div>
@@ -17,7 +17,17 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~assets/sass/vars';
+
  .login-form {
-    min-width: 300px;
+   width: 100%;
+   padding: 20px;
+
+   &__content {
+     background: $translucid-color;
+     border-radius: 8px;
+     max-width: 300px;
+     margin: 0 auto;
+   }
  }
 </style>

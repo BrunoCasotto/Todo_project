@@ -1,27 +1,50 @@
 <template>
-  <form class="form-signin">
+  <form class="form-signin" v-on:submit.prevent="signIn(email, password)">
     <h1 class="h3 mb-3 font-weight-normal">
       Entrar
     </h1>
     <label for="inputEmail" class="sr-only">Email</label>
-    <input type="email" id="inputEmail" class="form-control mb-1" placeholder="Email" required="" autofocus="">
+    <input
+      v-model="email"
+      type="email"
+      id="inputEmail"
+      class="form-control mb-1"
+      placeholder="Email"
+    >
     <label for="inputPassword" class="sr-only">Senha</label>
-    <input type="password" id="inputPassword" class="form-control mb-4" placeholder="Senha" required="">
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+    <input
+      v-model="password"
+      type="password"
+      id="inputPassword"
+      class="form-control mb-4"
+      placeholder="Senha"
+    >
+    <button
+      class="btn btn-lg btn-primary btn-block"
+      type="submit"
+    >
+      Entrar
+    </button>
     <p class="mt-3 text-muted">© 2019-2020</p>
   </form>
 </template>
-<style>
-.NuxtLogo {
-  animation: 1s appear;
-}
+<script>
+import { singIn } from './../assets/js/services/auth'
 
-@keyframes appear {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+    }
+  },
+  methods: {
+    signIn(email, password) {
+      singIn({ email, password })
+    }
   }
 }
+</script>
+
+<style>
 </style>
