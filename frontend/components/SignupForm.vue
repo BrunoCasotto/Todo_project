@@ -1,7 +1,7 @@
 <template>
   <form class="form-signin" v-on:submit.prevent="signIn(email, password)">
     <h1 class="h3 mb-3 font-weight-normal text-center">
-      Entrar
+      Cadastrar
     </h1>
     <label for="inputEmail" class="sr-only">Email</label>
     <input
@@ -20,16 +20,25 @@
       placeholder="Senha"
     >
 
+    <label for="inputPassword" class="sr-only">Confirmar a senha</label>
+    <input
+      v-model="password"
+      type="password"
+      id="inputPassword"
+      class="form-control mb-2"
+      placeholder="Confirmar a senha"
+    >
+
     <div class="mb-2">
-      <nuxt-link to="/signup">
-        Não sou cadastrado
+      <nuxt-link to="/">
+        Ja sou cadastrado
       </nuxt-link>
     </div>
     <button
       class="btn btn-lg btn-primary btn-block"
       type="submit"
     >
-      Entrar
+      Cadastrar
     </button>
     <p class="mt-3 text-muted text-center">© 2019-2020</p>
   </form>
