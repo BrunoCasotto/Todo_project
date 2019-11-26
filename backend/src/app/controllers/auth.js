@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const mailer = require('./../modules/mailer')
 const User = require('./../models/user')
 const { secret } = require('./../../config/auth')
+const tokenValidate = require('./../middlewares/tokenValidate')
 
 const router = express.Router()
 
@@ -48,6 +49,19 @@ router.post('/authenticate', async (req, res) => {
   } catch (err) {
     console.error('AuthController::register', { err })
     res.status(400).send({ error: 'Authentication failed'})
+  }
+})
+
+//simple method to get user
+router.get('/user', tokenValidate, async (req, res) => {
+  const { userId } = req
+  try {
+    const user = await User.findById(userId).select('-tasks')
+
+    return res.send({ user })
+  } catch (err) {
+    console.error('AuthController::getUser', { err })
+    res.status(400).send({ error: 'getUser failed'})
   }
 })
 
