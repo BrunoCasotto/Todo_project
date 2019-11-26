@@ -5,11 +5,11 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_name || '',
+    title: process.env.npm_package_name || 'Tarefas online',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || 'gerenciador de tarefas' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -40,7 +40,16 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
+    '@nuxtjs/proxy'
   ],
+  proxy: {
+    '/api': {
+      target: process.env.API_URL || 'http://localhost:4000',
+      pathRewrite: {
+        '^/api' : '/'
+        }
+      }
+  },
   /*
   ** Build configuration
   */

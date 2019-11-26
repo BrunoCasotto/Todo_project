@@ -1,5 +1,5 @@
 <template>
-  <form class="form-signin" v-on:submit.prevent="signIn(email, password)">
+  <form class="form form-signin" v-on:submit.prevent="signIn(email, password)">
     <h1 class="h3 mb-3 font-weight-normal text-center">
       Entrar
     </h1>
@@ -19,25 +19,33 @@
       class="form-control mb-2"
       placeholder="Senha"
     >
-
     <div class="mb-2">
       <nuxt-link to="/signup">
         Não sou cadastrado
       </nuxt-link>
     </div>
-    <button
-      class="btn btn-lg btn-primary btn-block"
-      type="submit"
-    >
-      Entrar
-    </button>
+
+    <div class="form__controller">
+      <Loader :active="true" />
+      <button
+        class="btn btn-lg btn-primary btn-block"
+        type="submit"
+      >
+        Entrar
+      </button>
+    </div>
     <p class="mt-3 text-muted text-center">© 2019-2020</p>
   </form>
 </template>
+
 <script>
+import Loader from '~/components/Loader.vue'
 import { singIn } from './../assets/js/services/auth'
 
 export default {
+  components: {
+    Loader,
+  },
   data() {
     return {
       email: '',
@@ -52,5 +60,8 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+  .form {
+    position: relative;
+  }
 </style>
