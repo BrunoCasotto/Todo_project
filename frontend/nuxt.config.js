@@ -65,7 +65,10 @@ export default {
       },
     },
     redirect: {
-      logout: '/callback'
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
     }
   },
   /*

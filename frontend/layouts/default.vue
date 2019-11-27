@@ -1,6 +1,7 @@
 <template>
   <div class="main">
-    <Header />
+    <Navbar v-if="isLogged"/>
+    <Header v-else />
     <div class="main__content">
       <nuxt />
     </div>
@@ -9,11 +10,18 @@
 
 <script>
 import Header from '~/components/Header.vue'
+import Navbar from '~/components/Navbar.vue'
 
 export default {
   components: {
     Header,
+    Navbar,
   },
+  computed: {
+    isLogged() {
+      return this.$auth.loggedIn
+    }
+  }
 }
 </script>
 
@@ -24,10 +32,7 @@ export default {
 
   &__content {
     width: 100%;
-    min-height: calc(100vh - #{$header-height});
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: calc(100vh - #{$header-height});
   }
 }
 </style>

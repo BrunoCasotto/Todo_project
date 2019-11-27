@@ -30,7 +30,7 @@
     >
 
     <div class="mb-2">
-      <nuxt-link to="/">
+      <nuxt-link to="/login">
         Ja sou cadastrado
       </nuxt-link>
     </div>

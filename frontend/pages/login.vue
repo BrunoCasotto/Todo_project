@@ -19,15 +19,19 @@ export default {
 <style lang="scss">
 @import '~assets/sass/vars';
 
- .login-form {
-   width: 100%;
-   padding: 20px;
+.login-form {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-   &__content {
-     background: $translucid-color;
-     border-radius: 8px;
-     max-width: 300px;
-     margin: 0 auto;
-   }
- }
+  &__content {
+    background: $translucid-color;
+    border-radius: 8px;
+    min-width: 300px;
+    margin: 0 auto;
+  }
+}
 </style>
