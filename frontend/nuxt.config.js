@@ -28,6 +28,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: './plugins/Vuelidate' }
   ],
   /*
   ** Nuxt.js dev-modules
@@ -42,8 +43,14 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/proxy',
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    '@nuxtjs/toast',
   ],
+  toast: {
+    position: 'top-center',
+    duration: 3000,
+    keepOnHover: true,
+  },
   proxy: {
     '/api': {
       target: process.env.API_URL || 'http://localhost:4000',
