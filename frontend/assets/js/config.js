@@ -1,3 +1,3 @@
 
 export const backendHost = '/api'
-export const authenticatePath = 'auth/authenticate'
+export const registerPath = 'auth/register'

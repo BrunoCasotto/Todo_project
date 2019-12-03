@@ -10,9 +10,10 @@
 import SignupForm from '~/components/SignupForm.vue'
 export default {
   auth: false,
+  middleware: 'preventLogged',
   components: {
-    SignupForm
-  }
+    SignupForm,
+  },
 }
 </script>
 
@@ -26,6 +27,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   &__content {
     background: $translucid-color;

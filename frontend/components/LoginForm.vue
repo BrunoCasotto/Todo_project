@@ -35,7 +35,7 @@
         @click="clearErrors"
       >
       <span
-        v-if="$v.email.$invalid && showErrors"
+        v-if="$v.password.$invalid && showErrors"
         class="text-danger"
       >
         <small>Coloque sua senha</small>
@@ -45,6 +45,9 @@
     <div class="mb-2">
       <nuxt-link to="/signup">
         Não sou cadastrado
+      </nuxt-link> |
+      <nuxt-link to="/forgot">
+        Esqueci minha senha
       </nuxt-link>
     </div>
 
@@ -64,6 +67,7 @@
 
 <script>
 import { required, email } from 'vuelidate/lib/validators'
+import { signIn } from '~/assets/js/services/auth'
 import Loader from '~/components/Loader.vue'
 
 export default {
@@ -92,20 +96,16 @@ export default {
     },
     validateAndSignIn(email, password) {
       if(this.formIsValid) {
-        this.signIn(email, password)
+        this.callSignIn(email, password)
       } else {
         this.ShowErrors()
       }
     },
-    async signIn(email, password) {
+    async callSignIn(email, password) {
+      this.showLoginLoader = true
+
       try {
-        this.showLoginLoader = true
-        await this.$auth.loginWith('local', {
-          data: {
-            email,
-            password
-          }
-        })
+        await signIn({ email, password }, this.$auth)
       } catch (error) {
         this.$toast.error('Erro ao entrar. verifique email e senha.')
       }
