@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { backendHost, registerPath } from './../config'
+import { registerPath } from './../config'
 
 export const signIn = async ({ email, password }, auth) => {
   return await auth.loginWith('local', {
@@ -11,8 +11,7 @@ export const signIn = async ({ email, password }, auth) => {
 }
 
 export const signUp = async ({ name, email, password }, auth) => {
-  const url = `${backendHost}/${registerPath}`
-  const { data } = await axios.post(url, {
+  const { data } = await axios.post(registerPath, {
     name,
     email,
     password

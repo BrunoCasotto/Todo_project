@@ -59,6 +59,10 @@ export default {
         }
       }
   },
+  axios: {
+    baseURL: '/api',
+    credentials: true
+  },
   router: {
     middleware: ['auth']
   },
@@ -66,8 +70,8 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/api/auth/authenticate', method: 'post', propertyName: 'token' },
-          user: { url: '/api/auth/user', method: 'get', propertyName: 'user' }
+          login: { url: '/auth/authenticate', method: 'post', propertyName: 'token' },
+          user: { url: '/auth/user', method: 'get', propertyName: 'user' }
         }
       },
     },
