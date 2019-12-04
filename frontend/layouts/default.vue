@@ -11,6 +11,7 @@
 <script>
 import Header from '~/components/Header.vue'
 import Navbar from '~/components/Navbar.vue'
+import "font-awesome/css/font-awesome.css"
 
 export default {
   components: {
@@ -32,7 +33,7 @@ export default {
 
   &__content {
     width: 100%;
-    height: calc(100vh - #{$header-height});
+    min-height: calc(100vh - #{$header-height});
   }
 }
 </style>
