@@ -1,8 +1,8 @@
 import axios from 'axios'
-import { registerPath } from './../config'
+import { auth } from '~/assets/js/config/paths'
 
-export const signIn = async ({ email, password }, auth) => {
-  return await auth.loginWith('local', {
+export const signIn = async ({ email, password }, authService) => {
+  return await authService.loginWith('local', {
     data: {
       email,
       password
@@ -10,14 +10,14 @@ export const signIn = async ({ email, password }, auth) => {
   })
 }
 
-export const signUp = async ({ name, email, password }, auth) => {
-  const { data } = await axios.post(registerPath, {
+export const signUp = async ({ name, email, password }, authService) => {
+  const { data } = await axios.post(auth.register, {
     name,
     email,
-    password
+    password,
   })
 
   if(data.token) {
-    await auth.setUserToken(data.token)
+    await authService.setUserToken(data.token)
   }
 }
