@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { auth } from '~/assets/js/config/paths'
 
 export const signIn = async ({ email, password }, authService) => {
@@ -10,8 +9,8 @@ export const signIn = async ({ email, password }, authService) => {
   })
 }
 
-export const signUp = async ({ name, email, password }, authService) => {
-  const { data } = await axios.post(auth.register, {
+export const signUp = async ({ name, email, password }, authService, axiosService) => {
+  const { data } = await axiosService.post(auth.register, {
     name,
     email,
     password,
