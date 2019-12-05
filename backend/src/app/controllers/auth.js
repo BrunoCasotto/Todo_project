@@ -47,7 +47,7 @@ router.post('/authenticate', async (req, res) => {
     const token = generateToken(user.id)
     return res.send({ user, token })
   } catch (err) {
-    console.error('AuthController::register', { err })
+    console.error('AuthController::authenticate', { err })
     res.status(400).send({ error: 'Authentication failed'})
   }
 })
