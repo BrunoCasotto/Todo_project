@@ -76,7 +76,7 @@ export default {
   },
   computed: {
     emptyForm() {
-      return !this.title.length && this.description.length
+      return !this.title.length && !this.description.length
     }
   }
 }
