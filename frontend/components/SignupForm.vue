@@ -137,10 +137,10 @@ export default {
       this.showLoader = true
 
       try {
-        await signUp({ name, email, password }, this.$auth)
+        const logged = await signUp({ name, email, password }, this.$auth, this.$axios)
         this.$router.push('dashboard')
       } catch (error) {
-        this.$toast.error('Erro ao cadastrar, confirme seus dados.')
+        this.$toast.error('Erro ao cadastrar, confirme seus dados')
       }
 
       this.showLoader = false
