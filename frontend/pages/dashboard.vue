@@ -1,16 +1,20 @@
 <template>
   <div class="home-page">
+    <button
+      @click="openNewTaskForm"
+      class="btn__add btn btn-primary fa fa-plus"
+    />
+
     <div class="home-page__content text-center">
-      <div
-        class="home-page__content__overlay"
-        @click="closeForms"
-        v-if="taskEditId"
-      />
+      <h4 class="mb-4">
+        Minhas tarefas
+      </h4>
 
       <div
-        class="home-page__task-form small shadow"
         v-if="newTaskForm"
+        class="home-page__task-form small shadow"
       >
+        <h6 class="text-left">Nova tarefa</h6>
         <a
           @click="closeForms"
           href="#"
@@ -22,15 +26,6 @@
           :saveTask="createTask"
         />
       </div>
-
-      <h4 class="mb-4">
-        Minhas tarefas
-      </h4>
-
-      <button
-        @click="openNewTaskForm"
-        class="btn__add btn btn-primary fa fa-plus"
-      />
 
       <div class="task-list">
         <template v-for="task in tasks">
@@ -55,6 +50,11 @@
         </template>
       </div>
 
+      <div
+        class="home-page__content__overlay"
+        @click="closeForms"
+        v-if="taskEditId"
+      />
     </div>
   </div>
 </template>
@@ -83,11 +83,11 @@ export default {
     async deleteTask(id) {
       console.log('remove', id)
     },
-    async saveTask(id) {
-      console.log('save', id)
+    async saveTask({ id, title, description }) {
+      console.log('save', id, title, description)
     },
-    async createTask(task) {
-      console.log('create', task)
+    async createTask({ title, description }) {
+      console.log('create', title, description)
     },
     async fetchTasks() {
       const { tasks } = await getAllTasks(this.$axios)
@@ -98,6 +98,7 @@ export default {
       this.closeTaskEdit()
     },
     openTaskEdit(id) {
+      this.scrollTop()
       this.taskEditId = id
       this.newTaskForm = false
     },
@@ -105,11 +106,16 @@ export default {
       this.taskEditId = null
     },
     openNewTaskForm() {
+      this.scrollTop()
       this.newTaskForm = true
       this.taskEditId = null
     },
     closeNewTaskForm() {
       this.newTaskForm = false
+    },
+    scrollTop() {
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
     }
   }
 }
@@ -118,9 +124,10 @@ export default {
 <style lang="scss">
 @import '~assets/sass/vars';
 .btn__add {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+  z-index: 10;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
 }
 
 .home-page__task-form {
@@ -129,7 +136,7 @@ export default {
   margin: 40px auto 30px;
   border-radius: 8px;
   background: white;
-  padding: 20px;
+  padding: 15px;
   position: relative;
   padding-top: 40px;
 
@@ -157,7 +164,7 @@ export default {
     background: white;
     cursor: pointer;
     flex: 1;
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
     min-width: 230px;
 
@@ -166,7 +173,7 @@ export default {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      width: calc(100% - 20px);
+      width: calc(100% - 10px);
       max-width: 500px;
       min-height: 200px;
       padding: 20px;

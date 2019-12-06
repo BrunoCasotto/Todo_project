@@ -23,7 +23,7 @@
 
     <div class="task-form__controller row">
       <button
-        @click="saveTask(task._id, title, description)"
+        @click="saveTask({ id: task._id || '', title, description })"
         type="submit"
         class="col-5 mr-2 btn btn-primary"
         :class="{ 'col-12': createForm }"
