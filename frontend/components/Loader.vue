@@ -30,6 +30,7 @@ export default {
   width: 100%;
   height: 100%;
   background: $translucid-color;
+  z-index: 7;
 
   &__content {
     position: absolute;

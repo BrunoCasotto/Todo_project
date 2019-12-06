@@ -14,6 +14,8 @@
         v-if="newTaskForm"
         class="home-page__task-form small shadow"
       >
+        <Loader :active="createFormLoader" />
+
         <h6 class="text-left">Nova tarefa</h6>
         <a
           @click="closeForms"
@@ -35,6 +37,8 @@
             :class="task._id === taskEditId ? 'task-list__item--active' : ''"
             @click="openTaskEdit(task._id)"
           >
+            <Loader :active="editFormLoader && task._id === taskEditId" />
+
             <TaskForm
               v-if="task._id === taskEditId"
               :task="task"
@@ -62,15 +66,20 @@
 <script>
 import { getAllTasks } from '~/assets/js/services/tasks'
 import Task from '~/components/Task'
+import Loader from '~/components/Loader'
 import TaskForm from '~/components/TaskForm'
 
 export default {
   components: {
     Task,
     TaskForm,
+    Loader,
   },
   data() {
     return {
+      editFormLoader: false,
+      createFormLoader: false,
+      createLoader: false,
       tasks: [],
       taskEditId: null,
       newTaskForm: false
@@ -81,12 +90,15 @@ export default {
   },
   methods: {
     async deleteTask(id) {
+      this.editFormLoader = true
       console.log('remove', id)
     },
     async saveTask({ id, title, description }) {
+      this.editFormLoader = true
       console.log('save', id, title, description)
     },
     async createTask({ title, description }) {
+      this.createFormLoader = true
       console.log('create', title, description)
     },
     async fetchTasks() {
@@ -94,6 +106,8 @@ export default {
       this.tasks = tasks
     },
     closeForms() {
+      this.editFormLoader = false
+      this.createFormLoader = false
       this.closeNewTaskForm()
       this.closeTaskEdit()
     },
@@ -131,6 +145,7 @@ export default {
 }
 
 .home-page__task-form {
+  position: relative;
   max-width: 500px;
   width: 100%;
   margin: 40px auto 30px;
@@ -160,6 +175,8 @@ export default {
   position: relative;
 
   &__item {
+    position: relative;
+    overflow: hidden;
     border-radius: 8px;
     background: white;
     cursor: pointer;
