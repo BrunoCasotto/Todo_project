@@ -6,7 +6,10 @@
     />
 
     <div class="home-page__content text-center">
-      <h4 class="mb-4">
+      <h4 v-if="!tasks.length">
+        Você não tem tarefas cadastradas...
+      </h4>
+      <h4 v-else class="mb-4">
         Minhas tarefas
       </h4>
 
@@ -42,7 +45,7 @@
             <TaskForm
               v-if="task._id === taskEditId"
               :task="task"
-              :deleteTask="deleteTask"
+              :removeTask="removeTask"
               :saveTask="saveTask"
             />
             <Task
@@ -64,7 +67,7 @@
 </template>
 
 <script>
-import { getAllTasks } from '~/assets/js/services/tasks'
+import { getAllTasks, createTask, removeTask, updateTask } from '~/assets/js/services/tasks'
 import Task from '~/components/Task'
 import Loader from '~/components/Loader'
 import TaskForm from '~/components/TaskForm'
@@ -89,17 +92,44 @@ export default {
     this.fetchTasks()
   },
   methods: {
-    async deleteTask(id) {
-      this.editFormLoader = true
-      console.log('remove', id)
+    async removeTask(id) {
+      this.createFormLoader = true
+
+      try {
+        const { tasks } = await removeTask(id, this.$axios)
+        this.tasks = tasks
+      } catch (error) {
+        this.$toast.error('Erro ao remover a tarefa')
+      }
+
+      this.createFormLoader = false
+      this.closeForms()
     },
     async saveTask({ id, title, description }) {
       this.editFormLoader = true
-      console.log('save', id, title, description)
+
+      try {
+        await updateTask({ title, description }, id, this.$axios)
+        await this.fetchTasks()
+      } catch (error) {
+        this.$toast.error('Erro ao atualizar tarefa')
+      }
+
+      this.editFormLoader = false
+      this.closeForms()
     },
     async createTask({ title, description }) {
       this.createFormLoader = true
-      console.log('create', title, description)
+
+      try {
+        const { tasks } = await createTask({ title, description }, this.$axios)
+        this.tasks = tasks
+      } catch (error) {
+        this.$toast.error('Erro ao criar nova tarefa')
+      }
+
+      this.createFormLoader = false
+      this.closeForms()
     },
     async fetchTasks() {
       const { tasks } = await getAllTasks(this.$axios)
@@ -208,6 +238,7 @@ export default {
     background: $translucid-color;
     border-radius: 8px;
     max-width: 1200px;
+    min-height: 400px;
     margin: 0 auto;
     position: relative;
     overflow: hidden;

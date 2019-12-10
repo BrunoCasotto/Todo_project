@@ -34,7 +34,7 @@
 
       <button
         v-if="!createForm"
-        @click="deleteTask(task._id)"
+        @click="removeTask(task._id)"
         type="submit"
         class="col-5 btn btn-danger"
       >
@@ -61,7 +61,7 @@ export default {
       type: Object,
       default: () => ({})
     },
-    deleteTask: {
+    removeTask: {
       type: Function,
       default: () => {},
     },

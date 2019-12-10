@@ -3,7 +3,7 @@ export const auth = {
   register: '/auth/register',
 }
 
-export const task = {
+export const taskPath = {
   all: '/task/all',
   save: '/task/save',
   remove: '/task/remove/[[ID]]',
