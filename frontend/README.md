@@ -1,8 +1,16 @@
-# frontend
+# ToDo frontend project
 
-> Task management  frontend
+<p>Esse projeto disponibiliza a interface gráfica web para o projeto ToDo.</p>
 
-## Build Setup
+## Imagens do projeto
+| | | |
+|:-------------------------:|:-------------------------:|:-------------------------:|
+|<img width="1604" alt="" src="https://github.com/BrunoCasotto/Todo_project/blob/master/frontend/doc/home.png">  Página inicial |  <img width="1604" alt="" src="https://github.com/BrunoCasotto/Todo_project/blob/master/frontend/doc/home.png"> Login|<img width="1604" alt="" src="https://github.com/BrunoCasotto/Todo_project/blob/master/frontend/doc/signup.png"> Cadastro|
+|<img width="1604" alt="" src="https://github.com/BrunoCasotto/Todo_project/blob/master/frontend/doc/task_list.png"> Lista de tarefas |  <img width="1604" alt="" src="https://github.com/BrunoCasotto/Todo_project/blob/master/frontend/doc/add_task.png"> Formulário de tarefa|<img width="1604" alt="" src="https://github.com/BrunoCasotto/Todo_project/blob/master/frontend/doc/reset.png"> Reset de senha|
+
+<p>Apenas algumas telas</p>
+
+## Instalaçao
 
 ``` bash
 # install dependencies
