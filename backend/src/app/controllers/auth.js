@@ -67,7 +67,7 @@ router.get('/user', tokenValidate, async (req, res) => {
 
 //simple method to generate a token to password reset and send to email
 router.post('/forgot_password', async (req, res) => {
-  const { email } = req.body
+  const { email, resetUrl } = req.body
   try {
     const user = await User.findOne( { email })
 
@@ -92,6 +92,7 @@ router.post('/forgot_password', async (req, res) => {
       template: 'auth/forgot_password',
       context: {
         token,
+        url: `${resetUrl}/${token}`,
       },
     })
 

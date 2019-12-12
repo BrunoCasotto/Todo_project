@@ -1,4 +1,4 @@
-import { auth } from '~/assets/js/config/paths'
+import { auth, password } from '~/assets/js/config/paths'
 
 export const signIn = async ({ email, password }, authService) => {
   return await authService.loginWith('local', {
@@ -19,4 +19,11 @@ export const signUp = async ({ name, email, password }, authService, axiosServic
   if(data.token) {
     await authService.setUserToken(data.token)
   }
+}
+
+export const sendResetPasswordEmail = async ({ email }, axiosService) => {
+  return axiosService.post(password.forgot, {
+    email,
+    resetUrl: 'http://localhost:3000/reset-password'
+  })
 }
