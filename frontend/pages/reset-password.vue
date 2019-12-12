@@ -1,19 +1,19 @@
 <template>
   <div class="login-form">
     <div class="login-form__content shadow p-3">
-      <ForgotForm />
+      <ResetPasswordForm />
     </div>
   </div>
 </template>
 
 <script>
-import ForgotForm from '~/components/ForgotForm.vue'
+import ResetPasswordForm from '~/components/ResetPasswordForm.vue'
 
 export default {
   auth: false,
   middleware: 'preventLogged',
   components: {
-    ForgotForm
+    ResetPasswordForm
   },
   auth: false
 }

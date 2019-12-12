@@ -92,7 +92,7 @@ router.post('/forgot_password', async (req, res) => {
       template: 'auth/forgot_password',
       context: {
         token,
-        url: `${resetUrl}/${token}`,
+        url: `${resetUrl}?token=${token}&email=${email}`,
       },
     })
 

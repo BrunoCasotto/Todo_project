@@ -10,7 +10,7 @@ export const taskPath = {
   update: '/task/update/[[ID]]',
 }
 
-export const password = {
+export const passwordPath = {
   forgot: 'auth/forgot_password',
   reset: '/auth/reset_password',
 }
