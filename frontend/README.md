@@ -10,7 +10,19 @@
 
 <p>Apenas algumas telas</p>
 
-## Instalaçao
+## Autenticacao
+A autenticação do projeto utiliza login e senha que gera um token (JWT) para as requisições. Para implementar a sessão do usuário foi utilizado o modulo de [nuxt auth] (https://auth.nuxtjs.org/) em conjunto com [nuxt axios] (https://axios.nuxtjs.org/). Utilizando a integracão com nossa api [backend](./../backend) de autenticacão obtemos o token, enquanto o usuário estiver com um token válido as requisições feitas para a api são encaminhadas com o authorization no header.
+
+## Integração com a API
+Para integrar nossa api backend foi feito um proxy que é acessado a partir de /api levando em consideração host e porta que o projeto estiver rodando.
+
+## Roteamento
+Com o uso dos middlewares de auth identificamos quais rotas são acessíveis a partir de um usuário autenticado e quais são bloqueadas para ele. para mais informações [ver essa doc](https://auth.nuxtjs.org/guide/middleware.html)
+
+## Estilo das páginas
+Para o estilo foi utilizado [Bootstrap 4](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/), em conjunto com sass para personalizar estilos.
+
+## Instalação
 
 ``` bash
 # install dependencies
