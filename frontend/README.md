@@ -10,7 +10,7 @@
 
 <p>Apenas algumas telas</p>
 
-## Autenticacao
+## Autenticação
 A autenticação do projeto utiliza login e senha que gera um token (JWT) para as requisições. Para implementar a sessão do usuário foi utilizado o modulo de [nuxt auth] (https://auth.nuxtjs.org/) em conjunto com [nuxt axios] (https://axios.nuxtjs.org/). Utilizando a integracão com nossa api [backend](./../backend) de autenticacão obtemos o token, enquanto o usuário estiver com um token válido as requisições feitas para a api são encaminhadas com o authorization no header.
 
 ## Integração com a API
