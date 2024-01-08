@@ -1,6 +1,6 @@
 # ToDo frontend project
 
-<p>Esse projeto disponibiliza a interface gráfica web para o projeto ToDo.</p>
+<p>This is a client side module for TODO project</p>
 
 ## Imagens do projeto
 | | | |
@@ -11,18 +11,18 @@
 <p>Apenas algumas telas</p>
 
 ## Autenticação
-A autenticação do projeto utiliza login e senha que gera um token (JWT) para as requisições [[documentação](./../backend#Autenticação)]. Para implementar a sessão do usuário foi utilizado o módulo [nuxt auth](https://auth.nuxtjs.org/) em conjunto com [nuxt axios](https://axios.nuxtjs.org/). Utilizando a integracão com nossa api [backend](./../backend) de autenticacão obtemos o token, enquanto o usuário estiver com um token válido as requisições feitas para a api são encaminhadas com o authorization no header.
+The project's authentication uses a username and password, generating a token (JWT) for requests [[documentation](./../backend#Authentication)]. To implement user sessions, the [nuxt auth](https://auth.nuxtjs.org/) module was used in conjunction with [nuxt axios](https://axios.nuxtjs.org/). By integrating with our [backend](./../backend) authentication API, we obtain the token. As long as the user has a valid token, requests made to the API include the authorization token in the header.
 
 ## Integração com a API
-Para integrar nossa api backend foi feito um proxy que é acessado a partir de /api levando em consideração host e porta que o projeto estiver rodando.
+To integrate with our backend API, a proxy was created, which is accessed from /api, taking into account the host and port where the project is running.
 
 ## Roteamento
-Com o uso dos middlewares de auth identificamos quais rotas são acessíveis a partir de um usuário autenticado e quais são bloqueadas para ele. para mais informações [ver essa doc](https://auth.nuxtjs.org/guide/middleware.html)
+With the use of auth middlewares, we identify which routes are accessible for an authenticated user and which ones are blocked for them. For more information, [refer to this documentation](https://auth.nuxtjs.org/guide/middleware.html).
 
 ## Estilo das páginas
-Para o estilo foi utilizado [Bootstrap 4](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/), em conjunto com sass para personalizar estilos.
+For the styling, [Bootstrap 4](https://getbootstrap.com.br/docs/4.1/getting-started/introduction/) was used, along with Sass to customize styles.
 
-## Instalação
+## Getting started
 
 ``` bash
 # install dependencies
