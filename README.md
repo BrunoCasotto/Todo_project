@@ -1,14 +1,14 @@
-# Organizador de tarefas :wink:
+# User task manager :wink:
 A Nuxt + Node + Mongo + docker project to manage tasks
 
 | Login | Tarefas |Form|
 |:-------------------------:|:-------------------------:|:-------------------------:|
 |<img width="200" alt="" src="https://github.com/BrunoCasotto/Todo_project/blob/master/frontend/doc/login.png">|  <img width="200" alt="" src="https://github.com/BrunoCasotto/Todo_project/blob/master/frontend/doc/task_list.png"> | <img width="200" alt="" src="https://github.com/BrunoCasotto/Todo_project/blob/master/frontend/doc/add_task.png"> |
 ## BackEnd
-O backend desse projeto trata-se de APIS desenvolvida em Javascript na plataforma Node que permitem o cadastro de usuário, autenticacão, envio de emails para reset de senha, criar, alterar e remover tarefas de cada usuário.<br>
+The backend of this project consists of APIs developed in JavaScript on the Node.js platform. These APIs facilitate user registration, authentication, email sending for password reset, as well as creating, modifying, and removing tasks for each user.
 [ver documentação](./backend)
 
 ## FrontEnd
-O frontend desse projeto foi desenvolvido utilizando [Nuxt](https://nuxtjs.org/). Todas funcionalidades que o [backend](./backend) disponibiliza foram integradas com o projeto. [ver documentação](./frontend)
+The frontend of this project was developed using [Nuxt](https://nuxtjs.org/). All the functionalities provided by the [backend](./backend) have been integrated into the project. [See documentation](./frontend)
 
-<p>Propósito de estudo :metal:</p>
+<p>Studend project :metal:</p>
